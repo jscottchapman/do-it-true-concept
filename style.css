@@ -746,6 +746,63 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 700; line-he
   .card { padding: 28px 24px; }
 }
 
+/* ---- Password Gate ---- */
+.password-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.password-gate.unlocked { display: none; }
+body.locked { overflow: hidden; }
+.password-gate-inner {
+  text-align: center;
+  max-width: 360px;
+  padding: 0 24px;
+}
+.password-gate-logo {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 16px;
+}
+.password-gate-label {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+.password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.password-form input {
+  width: 100%;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.password-form input:focus { border-color: var(--accent); }
+.password-gate-error {
+  font-size: 13px;
+  color: var(--red-light);
+  margin-top: 12px;
+  min-height: 20px;
+}
+
 /* ---- Animations ---- */
 .fade-in {
   opacity: 0;

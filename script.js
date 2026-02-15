@@ -1,3 +1,28 @@
+// Password gate
+const gate = document.getElementById('passwordGate');
+const passwordForm = document.getElementById('passwordForm');
+const passwordInput = document.getElementById('passwordInput');
+const passwordError = document.getElementById('passwordError');
+
+if (sessionStorage.getItem('dit-unlocked') === '1') {
+  gate.classList.add('unlocked');
+} else {
+  document.body.classList.add('locked');
+}
+
+passwordForm.addEventListener('submit', e => {
+  e.preventDefault();
+  if (passwordInput.value === 'solutions2026') {
+    sessionStorage.setItem('dit-unlocked', '1');
+    gate.classList.add('unlocked');
+    document.body.classList.remove('locked');
+  } else {
+    passwordError.textContent = 'Incorrect password. Try again.';
+    passwordInput.value = '';
+    passwordInput.focus();
+  }
+});
+
 // Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
