@@ -442,12 +442,15 @@
     const nxt = slides[i];
 
     old.classList.remove('active');
-    old.classList.add(direction === 1 ? 'exit-left' : '');
-    if (direction === -1) old.style.transform = 'translateX(40px)';
+    if (direction === 1) {
+      old.classList.add('exit-left');
+    } else {
+      old.style.transform = 'translateX(40px)';
+    }
 
-    nxt.style.transform = direction === 1 ? 'translateX(40px)' : 'translateX(-40px)';
     nxt.classList.remove('exit-left');
-    // force reflow so transition triggers
+    nxt.style.transform = direction === 1 ? 'translateX(40px)' : 'translateX(-40px)';
+    // force reflow so transition triggers from the offset
     void nxt.offsetWidth;
     nxt.classList.add('active');
     nxt.style.transform = '';
